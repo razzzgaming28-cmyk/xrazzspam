@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>XraxzzSpam</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ===== INTRO SLIDER ===== -->
+<div id="intro" class="overlay">
+  <div class="slides">
+    <div id="track" class="track">
+      <section class="slide glass bubble"><div class="letter">R</div><h1>Selamat Datang Di XraxzzSpam</h1><p class="sub">Geser ke kanan untuk melanjutkan.</p></section>
+      <section class="slide glass bubble"><div class="letter">A</div><h1>Developer RaXzz</h1><p class="sub">telegram: @xraxzzv13</p></section>
+      <section class="slide glass bubble"><div class="letter">X</div><h1>Selamat Menikmati Fitur Nya Yah!</h1><p class="sub">Geser sekali lagi untuk masuk.</p></section>
+    </div>
+    <div class="dots"><i class="on"></i><i></i><i></i></div>
+    <button id="slideBtn" class="btn wide">Geser Ke Kanan</button>
+  </div>
+</div>
+
+<!-- ===== LOGIN ===== -->
+<div id="login" class="login hidden">
+  <div class="loginbox glass bubble">
+    <h2>Masuk Ke XraxzzSpam</h2>
+    <p class="sub">Gunakan akun yang tersedia.</p>
+    <div class="login-input-group">
+      <input id="user" class="input" placeholder="Username" autocomplete="off">
+      <button class="dropdown-btn" onclick="toggleLoginDropdown()"><i class="fas fa-chevron-down"></i></button>
+      <div id="loginDropdown" class="login-dropdown"></div>
+    </div>
+    <div class="field"><label>Password</label><input id="pass" class="input" type="password"></div>
+    <button class="btn wide" onclick="doLogin()">Masuk</button>
+    <p id="loginStatus" class="sub"></p>
+  </div>
+</div>
+
+<!-- ===== MAINTENANCE ===== -->
+<div id="maintenance" class="maintenance hidden">
+  <div class="card glass bubble"><h2>Pemeliharaan</h2><p class="sub">XraxzzSpam sedang dalam pemeliharaan. Silakan coba lagi nanti.</p></div>
+</div>
+
+<!-- ===== SIDEBAR ===== -->
+<div class="sidebar-overlay" id="sidebarOverlay" onclick="toggleSidebar()"></div>
+<div class="sidebar" id="sidebar">
+  <div class="close-sidebar" onclick="toggleSidebar()"><i class="fas fa-times"></i></div>
+  <div style="margin: 20px 0 10px; font-size: 20px; font-weight: 900; color: #4bc7ff;"><i class="fas fa-bars"></i> Menu</div>
+  <div class="menu-item" onclick="toggleSidebar(); page('home', null)"><i class="fas fa-home"></i> Home</div>
+  <div class="menu-item" onclick="toggleSidebar(); page('tools', null)"><i class="fas fa-wrench"></i> Tools</div>
+  <div class="menu-item" onclick="toggleSidebar(); page('games', null)"><i class="fas fa-gamepad"></i> Games</div>
+  <div class="menu-item" onclick="toggleSidebar(); page('profile', null)"><i class="fas fa-user"></i> Profile</div>
+  <div class="menu-item" onclick="toggleSidebar(); openGlobalChat()"><i class="fas fa-globe"></i> Global Chat</div>
+  <div class="menu-item" onclick="toggleSidebar(); page('media', null)"><i class="fab fa-instagram"></i> XraxzzMedia</div>
+  <div class="menu-item" onclick="toggleSidebar(); page('tabungan', null)"><i class="fas fa-wallet"></i> Tabungan</div>
+  <div class="menu-item" onclick="toggleSidebar(); page('ai', null)"><i class="fas fa-robot"></i> AI Chat</div>
+</div>
+
+<!-- ===== APP ===== -->
+<main id="app" class="app hidden">
+  <header class="header">
+    <div style="display:flex;align-items:center;gap:12px;">
+      <button onclick="toggleSidebar()" style="background:none;border:none;color:#fff;font-size:28px;cursor:pointer;"><i class="fas fa-bars"></i></button>
+      <b class="brand">xraxzzspam</b>
+    </div>
+    <div class="sys">
+      <span id="time">--:--:--</span>
+      <span class="bat"><i id="batfill"></i></span>
+      <span id="percent">--%</span>
+    </div>
+  </header>
+
+  <!-- HOME -->
+  <section id="home" class="page active">
+    <div class="hero glass bubble">
+      <img src="https://files.catbox.moe/4retuc.jpeg" alt="banner">
+      <div class="dev">developer: @xraxzzv13 - telegram</div>
+    </div>
+    <h1 class="title">SPAM OTP</h1>
+    <div class="card glass bubble">
+      <p class="sub"><i class="fas fa-bullseye" style="color:#4bc7ff;"></i> Kirim Sebanyak 45 OTP</p>
+      <div class="spam-loop-toggle">
+        <span style="font-size:12px;color:#8ea5bf;"><i class="fas fa-sync-alt"></i> Mode Loop:</span>
+        <button class="toggle-btn" id="loopToggle" onclick="toggleLoop()">OFF</button>
+        <span style="font-size:10px;color:#5a7a9a;" id="loopStatus">(Normal)</span>
+      </div>
+      <input id="otpNum" class="input" placeholder="628xxxxxxxxxx">
+      <button class="btn wide" style="margin-top:10px" onclick="spamOTP()"><i class="fas fa-paper-plane"></i> Kirim OTP</button>
+      <div id="otpResult" class="result"></div>
+      <div id="spamProgress" class="spam-progress"></div>
+      <div id="spamHistory" class="spam-number-history"></div>
+    </div>
+  </section>
+
+  <!-- TOOLS -->
+  <section id="tools" class="page">
+    <div id="toolHome">
+      <h1 class="title"><i class="fas fa-wrench"></i> TOOLS</h1>
+      <p class="sub">Pilih satu tombol untuk membuka satu halaman.</p>
+      <div id="toolGrid" class="grid"></div>
+    </div>
+    <div id="toolPages"></div>
+  </section>
+
+  <!-- GAMES -->
+  <section id="games" class="page">
+    <h1 class="title"><i class="fas fa-gamepad"></i> GAME</h1>
+    <p class="sub">Setiap game memiliki halaman dan tombol sendiri.</p>
+    <div id="gameGrid" class="grid"></div>
+    <div id="gamePage" class="card glass bubble hidden"></div>
+  </section>
+
+  <!-- PROFILE -->
+  <section id="profile" class="page">
+    <h1 class="title"><i class="fas fa-user"></i> PROFILE</h1>
+    <div class="card glass bubble">
+      <h3 id="profileUser">Username</h3>
+      <div class="field"><label>Password baru</label><input id="newPassword" class="input" type="password"></div>
+      <button class="btn wide" onclick="changePass()">Ubah Password</button>
+      <button class="btn wide" style="margin-top:10px" onclick="logout()">Log Out</button>
+      <p id="profileStatus" class="sub"></p>
+    </div>
+  </section>
+
+  <!-- XRAXZZMEDIA -->
+  <section id="media" class="page">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;">
+      <h1 class="title"><i class="fab fa-instagram"></i> XraxzzMedia</h1>
+      <div>
+        <button class="btn" style="padding:8px 14px;font-size:11px;" onclick="openMediaModal('story')"><i class="fas fa-plus-circle"></i> Story</button>
+        <button class="btn" style="padding:8px 14px;font-size:11px;" onclick="openMediaModal('post')"><i class="fas fa-plus"></i> Post</button>
+      </div>
+    </div>
+    <div id="mediaStories" class="stories" style="display:flex;gap:12px;overflow-x:auto;padding:10px 0;margin-bottom:12px;"></div>
+    <div id="mediaFeed"><div class="sub">Belum ada postingan.</div></div>
+  </section>
+
+  <!-- TABUNGAN -->
+  <section id="tabungan" class="page">
+    <h1 class="title"><i class="fas fa-wallet"></i> Tabungan</h1>
+    <div class="card glass bubble">
+      <div class="sub">Saldo saat ini</div>
+      <div id="tabunganBalance" class="tabungan-balance">Rp0</div>
+      <div style="display:flex;justify-content:space-between;font-size:12px;color:#aaa;margin-bottom:6px;">
+        <span>Target: <b id="tabunganTargetText">Rp0</b></span>
+        <span id="tabunganRemainingText">Sisa Rp0</span>
+      </div>
+      <div class="tabungan-progress"><i id="tabunganProgressBar"></i></div>
+      <div id="tabunganPercent" style="text-align:right;font-size:12px;color:#aaa;margin-top:6px;">0% tercapai</div>
+      <div class="tabungan-stats">
+        <div class="tabungan-stat"><span>PEMASUKAN</span><strong id="tabunganIncome">Rp0</strong></div>
+        <div class="tabungan-stat"><span>PENGELUARAN</span><strong id="tabunganExpense">Rp0</strong></div>
+        <div class="tabungan-stat"><span>TRANSAKSI</span><strong id="tabunganCount">0</strong></div>
+      </div>
+    </div>
+    <div class="tabungan-actions">
+      <button class="tabungan-action add" onclick="openTabunganModal('add')"><i class="fas fa-plus"></i> Tambah</button>
+      <button class="tabungan-action" onclick="openTabunganModal('minus')"><i class="fas fa-minus"></i> Kurang</button>
+    </div>
+    <div class="card glass bubble">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;">
+        <h3 style="font-size:16px;">Target Tabungan</h3>
+        <button class="btn" style="padding:6px 14px;font-size:10px;" onclick="openTargetModal()">Ubah Target</button>
+      </div>
+      <div class="tabungan-goal">
+        <div class="tabungan-goal-icon"><i class="fas fa-bullseye"></i></div>
+        <div class="tabungan-goal-info"><b id="tabunganGoalName">Target utama</b><p id="tabunganGoalDesc">Belum ada target.</p></div>
+      </div>
+    </div>
+    <div class="card glass bubble">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;">
+        <h3 style="font-size:16px;"><i class="fas fa-history"></i> Riwayat</h3>
+        <button class="btn" style="padding:6px 14px;font-size:10px;background:rgba(231,76,60,.2);color:#e74c3c;" onclick="clearTabunganHistory()">Hapus Semua</button>
+      </div>
+      <div id="tabunganHistory"></div>
+    </div>
+  </section>
+
+  <!-- AI CHAT -->
+  <section id="ai" class="page">
+    <h1 class="title"><i class="fas fa-robot" style="color:#4bc7ff;"></i> AI Chat</h1>
+    <div class="card glass bubble">
+      <div class="ai-chat-container" id="aiChatContainer">
+        <div class="ai-msg bot"><i class="fas fa-robot" style="color:#4bc7ff;"></i> Halo! Ada yang bisa saya bantu?</div>
+      </div>
+      <div class="ai-input-row">
+        <input id="aiInput" placeholder="Tanya apa saja..." onkeydown="if(event.key==='Enter') sendAI()">
+        <button onclick="sendAI()"><i class="fas fa-paper-plane"></i> Kirim</button>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- ===== BOTTOM NAV ===== -->
+<nav id="nav" class="nav hidden">
+  <button class="active" onclick="page('home', this)"><i class="fas fa-home"></i>SPAM OTP</button>
+  <button onclick="page('tools', this)"><i class="fas fa-wrench"></i>TOOLS</button>
+  <button onclick="page('games', this)"><i class="fas fa-gamepad"></i>GAME</button>
+  <button onclick="page('profile', this)"><i class="fas fa-user"></i>PROFILE</button>
+</nav>
+
+<!-- ===== AI FLOATING BUTTON ===== -->
+<button class="ai-floating" onclick="page('ai', null)" id="aiFloating"><i class="fas fa-robot"></i></button>
+
+<!-- ===== TOAST ===== -->
+<div id="toast" class="toast"></div>
+
+<!-- ============================================================ -->
+<!-- SCRIPT                                                       -->
+<!-- ============================================================ -->
+<script src="script.js"></script>
+
+</body>
+</html>
